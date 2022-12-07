@@ -3,6 +3,9 @@ import Card from "./Card";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import SkeletonCompo from "./SkeletonCompo";
 function App() {
   const perpage = 5;
   const baseUrl = "http://localhost:5000/all/listingproduct";
@@ -69,7 +72,7 @@ function App() {
         dataLength={productData.length}
         next={fetchMoreData}
         hasMore={productData.length<total}
-        loader={<h4>Loading...</h4>}
+        loader={<SkeletonCompo/>}
         endMessage={
           <p style={{ textAlign: "center", marginTop: "10px" }}>
             <b>Yay! You have seen it all</b>
